@@ -1,6 +1,17 @@
 import 'dotenv/config';
 import { createServer } from 'http';
 import { Client } from 'pg';
+import path from 'path';
+import fs from 'fs';
+
+const logFilePath = path.join(__dirname, 'logs', 'combined.log');
+const logStream = fs.createWriteStream(logFilePath, { flags: 'a' });
+
+const log = (message: string, data?: any) => {
+  const timestamp = new Date().toISOString();
+  const logMessage = data ? `${timestamp} - ${message} - ${JSON.stringify(data)}\n` : `${timestamp} - ${message}\n`;
+  logStream.write(logMessage);
+};
 
 const pgClient = new Client({
 	host: process.env.DB_HOST,
@@ -30,26 +41,26 @@ const channels = ['project_channel', 'task_channel'];
 				const { action, project } = data;
 				switch(action) {
 					case 'projectCreated':
-						console.log('Project created:', project);
+						log('Project created:', project);
 						break;
 					case 'projectUpdated':
-						console.log('Project updated:', project);
+						log('Project updated:', project);
 						break;
 					case 'projectDeleted':
-						console.log('Project deleted:', project);
+						log('Project deleted:', project);
 						break;
 				}
 			} else if (channel === 'task_channel') {
 				const { action, task } = data;
 				switch(action) {
 					case 'taskCreated':
-						console.log('Task created:', task);
+						log('Task created:', task);
 						break;
 					case 'taskUpdated':
-						console.log('Task updated:', task);
+						log('Task updated:', task);
 						break;
 					case 'taskDeleted':
-						console.log('Task deleted:', task);
+						log('Task deleted:', task);
 						break;
 				}
 			}
