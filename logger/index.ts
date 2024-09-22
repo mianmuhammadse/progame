@@ -4,7 +4,13 @@ import { Client } from 'pg';
 import path from 'path';
 import fs from 'fs';
 
-const logFilePath = path.join(__dirname, 'logs', 'combined.log');
+const logDir = path.join(__dirname, 'logs');
+const logFilePath = path.join(logDir, 'combined.log');
+
+if (!fs.existsSync(logDir)) {
+  fs.mkdirSync(logDir, { recursive: true });
+}
+
 const logStream = fs.createWriteStream(logFilePath, { flags: 'a' });
 
 const log = (message: string, data?: any) => {
