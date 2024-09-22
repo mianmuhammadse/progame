@@ -5,7 +5,7 @@ import {
 	getProjectById,
 	updateProject,
 	deleteProject,
-} from '../../../services/project-service';
+} from '../../../services/project.service';
 
 const router = Router();
 

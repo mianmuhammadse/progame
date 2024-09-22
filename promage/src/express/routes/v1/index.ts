@@ -1,6 +1,7 @@
 import { Router, Application, Request, Response, NextFunction } from 'express';
 import projectRoutes from './projects';
 import taskRoutes from './tasks';
+import managerRoutes from './managers';
 
 const index = (app: Application) => {
 	app.use((req: Request, res: Response, next: NextFunction) => {
@@ -15,6 +16,7 @@ const index = (app: Application) => {
 		resp.status(200).send({ application: 'Hello World!!' });
 	});
 
+	router.use('/managers', managerRoutes);
 	router.use('/projects', projectRoutes);
 	router.use('/tasks', taskRoutes);
 };

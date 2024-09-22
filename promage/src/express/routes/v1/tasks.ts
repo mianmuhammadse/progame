@@ -1,5 +1,5 @@
 import { Router, Request, Response } from 'express';
-import { getTasksByProject, createTask, updateTask, deleteTask } from '../../../services/task-service';
+import { getTasksByProject, createTask, updateTask, deleteTask } from '../../../services/task.service';
 
 const router = Router();
 
