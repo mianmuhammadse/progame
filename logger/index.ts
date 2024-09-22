@@ -78,8 +78,8 @@ const channels = ['project_channel', 'task_channel'];
 
 console.log('Logger service is listening for events on channels...');
 
-const hostname = '127.0.0.1';
-const port = 4000;
+const hostname = process.env.HOST || '127.0.0.1';
+const port = Number(process.env.LOGGER_PORT) || 4000;
 
 const server = createServer((req, res) => {
 	res.statusCode = 200;

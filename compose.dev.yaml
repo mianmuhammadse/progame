@@ -34,6 +34,8 @@ services:
     volumes:
       - ./logger:/usr/src/app
       - ./logger/node_modules:/usr/src/app/node_modules
+    depends_on:
+      - db
 
   db:
     image: postgres:16

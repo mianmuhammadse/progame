@@ -13,6 +13,4 @@ COPY --from=dependencies /app/node_modules ./node_modules
 COPY . .
 COPY entrypoint.sh .
 
-
-# Use the entrypoint script
 ENTRYPOINT ["./entrypoint.sh"]
