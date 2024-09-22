@@ -1,8 +1,8 @@
 services:
   promage:
     build: ./promage
-    container_name: app
-    restart: unless-stopped
+    container_name: backend
+    restart: on-failure
     ports:
       - 3000:3000
     environment:
@@ -15,9 +15,25 @@ services:
     volumes:
       - ./promage:/usr/src/app
       - ./promage/node_modules:/usr/src/app/node_modules
-    command: npm run dev
     depends_on:
       - db
+
+  logger:
+    build: ./logger
+    container_name: logger
+    restart: on-failure
+    ports:
+      - 4000:4000
+    environment:
+      - DB_HOST=${DB_HOST}
+      - DB_PORT=${DB_PORT}
+      - DB_USER=${DB_USER}
+      - DB_PASS=${DB_PASS}
+      - DIALECT=${DIALECT}
+      - DATABASE_URL=${DATABASE_URL}
+    volumes:
+      - ./logger:/usr/src/app
+      - ./logger/node_modules:/usr/src/app/node_modules
 
   db:
     image: postgres:16
