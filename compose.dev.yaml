@@ -1,4 +1,24 @@
 services:
+  promage:
+    build: ./promage
+    container_name: app
+    restart: unless-stopped
+    ports:
+      - 3000:3000
+    environment:
+      - DB_HOST=${DB_HOST}
+      - DB_PORT=${DB_PORT}
+      - DB_USER=${DB_USER}
+      - DB_PASS=${DB_PASS}
+      - DIALECT=${DIALECT}
+      - DATABASE_URL=${DATABASE_URL}
+    volumes:
+      - ./promage:/usr/src/app
+      - ./promage/node_modules:/usr/src/app/node_modules
+    command: npm run dev
+    depends_on:
+      - db
+
   db:
     image: postgres:16
     container_name: ${DB_NAME}
@@ -9,8 +29,6 @@ services:
       POSTGRES_USER: ${DB_USER}
       POSTGRES_DB: ${DB_NAME}
       POSTGRES_PASSWORD: ${DB_PASS}
-    expose:
-      - 5432
     ports:
       - 5432:5432
 

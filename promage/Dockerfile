@@ -1,0 +1,18 @@
+FROM node:20 as dependencies
+
+WORKDIR /app
+
+COPY package*.json ./
+
+RUN npm install
+
+FROM node:20 as builder
+WORKDIR /usr/src/app
+
+COPY --from=dependencies /app/node_modules ./node_modules
+COPY . .
+COPY entrypoint.sh .
+
+
+# Use the entrypoint script
+ENTRYPOINT ["./entrypoint.sh"]
