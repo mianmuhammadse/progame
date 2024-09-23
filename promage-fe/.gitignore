@@ -1,9 +1,3 @@
-node_modules/
-dist/
-*.env*
-pg-data
-logger/logs
-
 # Logs
 logs
 *.log

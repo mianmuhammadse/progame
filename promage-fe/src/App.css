@@ -1,0 +1,147 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+/* CSS for Projects component */
+/* Global Styles */
+body {
+  font-family: 'Comic Sans MS', cursive, sans-serif; /* Matches the sketchy style */
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+h1, h2 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
+  text-align: center;
+}
+
+button {
+  background-color: #f4f4f4;
+  border: 2px solid #333;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  outline: none;
+  transition: background-color 0.2s ease-in-out;
+}
+
+button:hover {
+  background-color: #ddd;
+}
+
+/* Table Styles */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  font-size: 0.9rem;
+}
+
+table thead th {
+  background-color: #f4f4f4;
+  border: 2px solid #333;
+  padding: 10px;
+  text-align: left;
+}
+
+table tbody tr {
+  border: 1px solid #333;
+  transition: background-color 0.2s;
+}
+
+table tbody tr:hover {
+  background-color: #f0f0f0;
+  cursor: pointer;
+}
+
+table tbody td {
+  border: 2px solid #333;
+  padding: 10px;
+}
+
+/* Layout */
+.container {
+  padding: 20px;
+  margin: auto;
+  width: 80%;
+}
+
+header {
+  padding: 20px;
+  border-bottom: 2px solid #333;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header h1 {
+  font-size: 1.8rem;
+}
+
+header .project-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.project-details {
+  margin-top: 20px;
+  font-size: 1.1rem;
+}
+
+.project-details p {
+  margin: 5px 0;
+}
+
+.tasks-table {
+  margin-top: 30px;
+}
+
+/* Form Styles */
+input[type="text"], input[type="date"] {
+  border: 2px solid #333;
+  padding: 0.5rem;
+  width: calc(100% - 1rem);
+  font-size: 1rem;
+  margin: 0.5rem 0;
+}
+
+select {
+  border: 2px solid #333;
+  padding: 0.5rem;
+  font-size: 1rem;
+  margin: 0.5rem 0;
+}
+
+table td, table th {
+  font-size: 1rem;
+  padding: 10px;
+}
+
+.tasks-table thead th {
+  background-color: #ddd;
+  font-weight: bold;
+}
+
+button {
+  font-family: 'Comic Sans MS', cursive;
+  background-color: #f9f9f9;
+  border: 2px solid #000;
+}
+
+button:hover {
+  background-color: #e0e0e0;
+}
+
+button:active {
+  box-shadow: none;
+}
+
+.pagination {
+  list-style: none;
+}
