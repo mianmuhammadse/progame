@@ -48,6 +48,21 @@ You will see that we have `backend` and `logger` running along with `postgres` d
 - Updating a task
 - Deleting a task
 
+The *Frontend* only has two components for now
+
+1. Projects list
+2. Tasks list of a specific project
+
+Also to access frontend locally on browser, you can run the following commands
+
+```bash
+cd promage-fe
+
+npm install
+
+npm run dev
+```
+
 The `promage` will generate the notifications to the `project_channel` and `task_channel`. Whenever a notification is sent, `logger` logs the details in a log file in the `logs` directory in `combined.log` file.
 
 The reason we are using PostgreSQL's `NOTIFY` and `LISTEN` instead of event bus or message brokers is because it is a simple and lightweight solution for our use case.
